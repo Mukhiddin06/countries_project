@@ -2,6 +2,7 @@ import { useState } from "react"
 import Search from "../assets/images/search.svg"
 import Card from "./Card"
 import Loading from "../assets/images/Loading.png"
+import Carusel from "./Carusel/Carusel"
 
 function Hero ({allCounters, countries, setCountries, setIsLoading, isLoading}){
 
@@ -32,8 +33,11 @@ function Hero ({allCounters, countries, setCountries, setIsLoading, isLoading}){
       }
     
     return(
-        <main>
-            <section className="bg-[#FAFAFA] pb-[45px]  min-h-[90vh] max-h-[150vh]">
+        <main className="bg-[#FAFAFA] pb-[45px]">
+            <section>
+                <div className="pt-[40px]">
+                    <Carusel/>
+                </div>
                 <div className="w-[1440px] mx-auto flex items-center justify-between py-[48px] px-[80px]">
                     <label className="relative bg-white w-[480px] shadow-sm rounded-lg">
                         <img src={Search} alt="Search Icon" className="absolute top-5 left-[32px]" width={18} height={18}/>
@@ -46,7 +50,7 @@ function Hero ({allCounters, countries, setCountries, setIsLoading, isLoading}){
                 </div>
                 <ul className="flex flex-wrap justify-between gap-y-[75px] w-[1440px] mx-auto px-[80px]">
                     {isLoading ? <img src={Loading} className="mx-auto mt-[100px]" width={200} /> : 
-                        countries.map(item => <Card key={item.id} item={item}/>)
+                        countries.map(item => <Card key={item.id} item={item} countries={countries} setCountries={setCountries} />)
                     }
                 </ul>
             </section>

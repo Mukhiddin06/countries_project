@@ -98,13 +98,16 @@ function App() {
     }
   ]
 
+
+
 const [countries, setCountries] = useState(allCounters)
 const [isLoading, setIsLoading] = useState(false)
+
 
   return (
     <>
     <Header setIsLoading={setIsLoading} countries={countries} setCountries={setCountries} />
-    <Hero allCounters={allCounters} countries={countries} setCountries={setCountries} isLoading={isLoading} setIsLoading={setIsLoading} />
+    <Hero allCounters={allCounters} countries={countries} setCountries={setCountries} isLoading={isLoading} setIsLoading={setIsLoading}/>
     </>
   );
 }

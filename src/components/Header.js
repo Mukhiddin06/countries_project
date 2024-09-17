@@ -3,9 +3,11 @@ import Moon from "../assets/images/Moon.svg"
 import Modal from "./Modal"
 import Button from "./Button"
 import Empty from "../assets/images/Empty.png"
+import toast, { Toaster } from "react-hot-toast"
 
 function Header({countries, setCountries, setIsLoading}){
     const [isOpenModal, setIsOpenModal] = useState(false)
+
     const [flag , setFlag] = useState(Empty)
 
     const [name, setName] = useState("")
@@ -28,9 +30,11 @@ function Header({countries, setCountries, setIsLoading}){
             isLiked: false,
             isBasket: false
         }
+        setIsLoading(true)
         setIsOpenModal(false)
         setTimeout(() => {
             setIsLoading(false)
+            toast.success('Successfully added!')
             setCountries([data, ...countries])
         }, 1000)
         setName("")
@@ -41,6 +45,7 @@ function Header({countries, setCountries, setIsLoading}){
 
     return (
         <>
+        <Toaster position="top-center" reverseOrder={false}/>
         <header className="shadow-lg">
             <div className="w-[1440px] py-[23px] px-[80px] flex items-center justify-between mx-auto">
                 <a href="/" className="font-extrabold text-[24px] leading-[32.74px]">Where in the world?</a>
